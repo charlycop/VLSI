@@ -1,0 +1,16 @@
+*  simulation statique de l'inverseur CMOS
+
+.lib "mon_inv.spi" typical
+.param Wp=3.88u
+
+Xinv d q dd 0 0 dd mon_inv W=Wp
+
+Vdd dd 0 DC 3.3
+Vd d 0 DC 0.0
+
+.DC Vd 0.0 3.3 {3.3/63}
+*.step param Wp 3.8u 4u 0.01u 
+
+.PLOT V(q)
+
+.END

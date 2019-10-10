@@ -1,0 +1,43 @@
+fichier .spi
+
+caractère * pour ignorer la ligne
+
+pas de diff majuscule et minuscule
+
+pas de caractères spéciaux sauf _
+
+voir documentation
+DC 3.3 :  
+SIN
+PULSE
+Transistor MOS : M
+
+On utilise la technologie 0,35micron CMOS soit L=0,35u W=0.7u
+m = milli
+u = micro
+n = nano
+meg = mega
+f = femto
+
+*parametres
+.param Vd=3.3
+.param Vg=3.3
+Vg g 0 DC Vg
+Vd d 0 DC Vd
+M1 d g 0 0 MN L=0.35u W=0.7u
+
+* Simulateur
+.DC Vg 0 3.3 0.01
+.plot
+
+EXERCICE 1
+Question 1 : Le transistor devient passant à partir d'environ 0.44V, on utilise la tangeant sur la partie linéaire de la racine carré de la courbe.
+
+EXERCICE 2
+Question 1 : La tension de changement d'état devrait etre a 3.3/2 soit 1,65V pour que l'inverseur soit équilibré
+
+Question 2 : 
+On a fait plusieurs version, et on est équilibré à Vdd/2, c'est à dire à 1.65v, avec un Wp=3.88 environ.
+
+EXERCICE 4 :
+Le buffer n'est pas utilie dans le cas d'une capacité faible, mais si la capabité augmente, on corrige la pente en mettant un buffer. 

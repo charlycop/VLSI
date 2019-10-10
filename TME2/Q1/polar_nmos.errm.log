@@ -1,0 +1,3 @@
+START report: Wed Oct  2 09:40:49 2019 
+** Warning: (eldo-323)  In file "./polar_nmos.spi" line 16:
++   COMMAND .DC: Previous values superseded.

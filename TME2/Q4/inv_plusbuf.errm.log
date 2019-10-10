@@ -1,0 +1,9 @@
+START report: Wed Oct  2 13:31:24 2019 
+** Warning: (eldo-65)  In file "./mon_inv.spi" line 10:
++   Probably missing surrounding ' or {} at or near W*N
++   Eldo will consider that as an expression, which is may be not what is expected.
+** Warning: (eldo-65)  In file "./mon_inv.spi" line 11:
++   Probably missing surrounding ' or {} at or near 1.4E-06*N
++   Eldo will consider that as an expression, which is may be not what is expected.
+** Warning: (eldo-204)  In file "./inv_plusbuf.spi" line 13:
++    OBJECT "XINV1": Already defined.

@@ -1,0 +1,23 @@
+//###########################################################
+//# ELDO 15.1 (64 bits) - Saved Window File
+//# Released Fri Feb 27 10:09:58 GMT 2015
+//#
+//# Note: This is an auto-generated file.
+//#
+//# Any edits that you make may cause the restore of
+//# this window to fail - EDIT AT YOUR OWN RISK
+//###########################################################
+
+
+// ===== Open new window =====
+OPEn WIndow -POSition 0 0 -MAXimized
+
+// ===== Create row #1 =====
+ADD WAveform  <inv_plusbuf/TRAN>V(D) 
+ADD WAveform -Row 1 <inv_plusbuf/TRAN>V(Q) 
+
+// ===== Set axis zero levels  =====
+SET AXis Properties -Axis Y1 -Row 1 -zerolevel on
+
+// ===== Format rows =====
+SET ROw Height -All -MAX
