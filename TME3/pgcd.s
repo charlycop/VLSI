@@ -4,26 +4,19 @@
 	.text
 	.globl	_start 
 
+MOV r7, #data
+MOV R6, #8
+MOV R5, #1
 
-_start:               
-	
-    // On donne un valeur a R1 et R0
-	MOV r0, #18
-    MOV r1, #36
+loop:
+ADD R5, R5, R5, LSL #2
+STRB R5, [R7, #1]
+SUBS R6, R6, #1
+BNE loop
 
-_while: 
-    CMP r0, r1  
-    BEQ _end    //si r0==r1 on jump
-    BGT _else   // si r0>r1 on jump else
-    SUB r1, r1, r0
-    b _while
-
-_else:
-    SUB r0, r0, r1
-    b _while
-
-_end:
 
 _good:
 
 _bad:
+
+data: .space 8
