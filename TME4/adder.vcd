@@ -1,0 +1,39 @@
+$date
+  Wed Oct 16 09:56:25 2019
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$var reg 4 ! a[3:0] $end
+$var reg 4 " b[3:0] $end
+$var reg 1 # cin[0:0] $end
+$var reg 5 $ s2[4:0] $end
+$scope module l0 $end
+$var reg 4 % a[3:0] $end
+$var reg 4 & b[3:0] $end
+$var reg 1 ' cin[0:0] $end
+$var reg 5 ( s2[4:0] $end
+$upscope $end
+$enddefinitions $end
+#0
+b0000 !
+b0000 "
+b0 #
+b00000 $
+b0000 %
+b0000 &
+b0 '
+b00000 (
+#100000000
+b0001 !
+b00001 $
+b0001 %
+b00001 (
+#200000000
+b0010 !
+b00010 $
+b0010 %
+b00010 (
