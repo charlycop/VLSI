@@ -25,9 +25,10 @@ begin
     L0: entity work.Alu
         port map (op1, op2, cin, cmd, res, cout, z, n, v, vdd, vss);
 
-    op1      <= (others=>'0'), "11111111111111111111111111110100" after 100 ns;
-    op2      <= "00000000000000000000000000000001";
+    op1      <= (others=>'0'), "01111111111111111111111111111111" after 100 ns, "11111111111111111111111111111111" after 200 ns;	
+ -- op1      <= (others=>'0');
+    op2      <= (others=>'0'), "00000000000000000000000000000001" after 100 ns, "10000000000000000000000000000001" after 200 ns; 
     cin      <= '0';
-    cmd      <= (others=>'0'), "01" after 150 ns, "10" after 200 ns, "11" after 250 ns;
+    cmd      <= (others=>'0');--, "01" after 150 ns, "10" after 200 ns, "11" after 250 ns, "00" after 300 ns;
 
 end simu;

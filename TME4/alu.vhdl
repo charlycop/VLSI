@@ -23,6 +23,7 @@ end Alu;
 ARCHITECTURE archi OF alu IS
 signal res_s : signed(32 downto 0);
 signal op1_s, op2_s : signed(31 downto 0);
+--signal z_s,n_s,v_s : std_logic;
 
 
 BEGIN
@@ -31,17 +32,20 @@ BEGIN
 op1_s   <= signed(op1);
 op2_s   <= signed(op2);
 
-res_s <= '0'&op1_s+op2_s+(cin & "")            WHEN cmd="00"              -- Addition avec retenue sortante
-    else signed(('0'& (op1 AND op2)))          WHEN cmd="01"
-    else signed(('0'& (op1 OR  op2)))          WHEN cmd="10"
-    else signed(('0'& (op1 XOR op2)))          WHEN cmd="11"
+res_s <= op1_s+op2_s+("00000000000000000000000000000000"&cin)            WHEN cmd="00"              -- Addition avec retenue sortante
+    else signed(( '0'&(op1 AND op2)))          WHEN cmd="01"
+    else signed(( '0'&(op1 OR  op2)))          WHEN cmd="10"
+    else signed(( '0'&(op1 XOR op2)))          WHEN cmd="11"
     else (others=>'0');
-
 
 res   <= std_logic_vector(res_s(31 downto 0));
 cout  <= std_logic(res_s(32));
-z <= '1' WHEN res_s=0 else '0';
-n <= '1' WHEN res_s(31)='1' else '0';
-v <= '1' WHEN res_s(32)='1' else '0';
+
+z <= '1' WHEN res_s(31 downto 0) ="00000000000000000000000000000000"       else '0';
+n <= res_s(31); -- négatif OK
+v <= '1' WHEN (res_s(31)='1'  AND op1(31)='0' AND op1(31)='0')   
+		   OR (res_s(32)='1')	 		
+		   else '0'; -- overflow OK
+
 
 END archi;
