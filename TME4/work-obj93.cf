@@ -11,3 +11,9 @@ file . "adder.vhdl" "07936c0b28482c6559610810bb32a31ba97e6fc3" "20191016073300.6
 file . "alu.vhdl" "a64cb6c84fc15069480a10f44aab0830f8253025" "20191023083705.257":
   entity alu at 4( 75) + 0 on 179;
   architecture archi of alu at 23( 595) + 0 on 180;
+file . "shifter.vhdl" "2aecfb5b30dbf5c934db71e3fdbbd1ab101c4048" "20191023105512.604":
+  entity shifter at 4( 75) + 0 on 295;
+  architecture archi of shifter at 26( 658) + 0 on 296;
+file . "testbenchshifter.vhdl" "5de87ae4406a2f3f463cabafb88c266aba3fa739" "20191023105513.273":
+  entity testbenchshifter at 4( 75) + 0 on 297;
+  architecture simu of testbenchshifter at 11( 195) + 0 on 298;
