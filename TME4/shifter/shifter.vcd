@@ -1,0 +1,70 @@
+$date
+  Fri Oct 25 07:52:52 2019
+$end
+$version
+  GHDL v0
+$end
+$timescale
+  1 fs
+$end
+$var reg 1 ! shift_lsl $end
+$var reg 1 " shift_lsr $end
+$var reg 1 # shift_asr $end
+$var reg 1 $ shift_ror $end
+$var reg 1 % shift_rrx $end
+$var reg 5 & shift_val[4:0] $end
+$var reg 32 ' din[31:0] $end
+$var reg 1 ( cin $end
+$var reg 32 ) dout[31:0] $end
+$var reg 1 * cout $end
+$var reg 1 + vdd $end
+$var reg 1 , vss $end
+$scope module l0 $end
+$var reg 1 - shift_lsl $end
+$var reg 1 . shift_lsr $end
+$var reg 1 / shift_asr $end
+$var reg 1 0 shift_ror $end
+$var reg 1 1 shift_rrx $end
+$var reg 5 2 shift_val[4:0] $end
+$var reg 32 3 din[31:0] $end
+$var reg 1 4 cin $end
+$var reg 32 5 dout[31:0] $end
+$var reg 1 6 cout $end
+$var reg 1 7 vdd $end
+$var reg 1 8 vss $end
+$var reg 32 9 decaltampon_s[31:0] $end
+$var integer 32 : shiftval_s $end
+$upscope $end
+$enddefinitions $end
+#0
+0!
+0"
+0#
+1$
+0%
+b00010 &
+b01111111111111111111111110011111 '
+1(
+b11011111111111111111111111100111 )
+1*
+0+
+0,
+0-
+0.
+0/
+10
+01
+b00010 2
+b01111111111111111111111110011111 3
+14
+b11011111111111111111111111100111 5
+16
+07
+08
+b00000000000000000000000000000000 9
+b10 :
+#100000000
+b11111111111111111111111110011111 '
+b11111111111111111111111111100111 )
+b11111111111111111111111110011111 3
+b11111111111111111111111111100111 5
