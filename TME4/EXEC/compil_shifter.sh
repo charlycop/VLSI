@@ -1,7 +1,7 @@
 #!/bin/bash
 
-fichier='exec'
-testbench='testbenchexec'
+fichier='shifter'
+testbench='testbenchshifter'
 etoiles='***********************'
 clear 
 

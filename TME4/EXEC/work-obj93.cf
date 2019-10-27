@@ -1,13 +1,22 @@
 v 4
-file . "../alu/alu.vhdl" "a64cb6c84fc15069480a10f44aab0830f8253025" "20191026135453.538":
-  entity alu at 4( 75) + 0 on 13;
-  architecture archi of alu at 23( 595) + 0 on 14;
-file . "../shifter/shifter.vhdl" "443d35f55eff54682077bb558eec797c32e5817d" "20191026135447.968":
-  entity shifter at 4( 75) + 0 on 11;
-  architecture archi of shifter at 26( 658) + 0 on 12;
-file . "../fifo/fifo_72b.vhdl" "0e754650560b07c0738e014e3462a20b160d92f7" "20191027092120.405":
-  entity fifo at 1( 0) + 0 on 11;
-  architecture dataflow of fifo at 24( 377) + 0 on 12;
-file . "exec.vhdl" "df6d337ad6461f294955292797a3836d79647911" "20191027092942.092":
-  entity exec at 1( 0) + 0 on 17;
-  architecture behavior of exec at 79( 2266) + 0 on 18;
+file . "testbenchexec.vhdl" "251961ee854e5b66094d3111978ad7bf1ed4c296" "20191027100415.466":
+  entity testbenchexec at 4( 75) + 0 on 35;
+  architecture simu of testbenchexec at 11( 189) + 0 on 36;
+file . "fifo_72b.vhdl" "0e754650560b07c0738e014e3462a20b160d92f7" "20191027095422.550":
+  entity fifo at 1( 0) + 0 on 19;
+  architecture dataflow of fifo at 24( 377) + 0 on 20;
+file . "shifter.vhdl" "443d35f55eff54682077bb558eec797c32e5817d" "20191027095352.389":
+  entity shifter at 4( 75) + 0 on 15;
+  architecture archi of shifter at 26( 658) + 0 on 16;
+file . "alu.vhdl" "a64cb6c84fc15069480a10f44aab0830f8253025" "20191027095340.358":
+  entity alu at 4( 75) + 0 on 11;
+  architecture archi of alu at 23( 595) + 0 on 12;
+file . "testbenchalu.vhdl" "a103e91954a27691540806b74512fe9b9f14945d" "20191027095341.007":
+  entity testbenchalu at 4( 75) + 0 on 13;
+  architecture simu of testbenchalu at 11( 187) + 0 on 14;
+file . "testbenchshifter.vhdl" "58de51308611abb5a9fae57e44c903e0785a343f" "20191027095353.187":
+  entity testbenchshifter at 4( 75) + 0 on 17;
+  architecture simu of testbenchshifter at 11( 195) + 0 on 18;
+file . "exec.vhdl" "df6d337ad6461f294955292797a3836d79647911" "20191027100413.862":
+  entity exec at 1( 0) + 0 on 33;
+  architecture behavior of exec at 79( 2266) + 0 on 34;

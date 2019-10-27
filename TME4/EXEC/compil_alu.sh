@@ -1,7 +1,7 @@
 #!/bin/bash
 
-fichier='exec'
-testbench='testbenchexec'
+fichier='alu'
+testbench='testbenchalu'
 etoiles='***********************'
 clear 
 
