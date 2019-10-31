@@ -78,14 +78,28 @@ end EXec;
 
 architecture Behavior OF EXec is
 signal c_s, exe_push, exe2mem_full : std_logic;
-signal op2_s, toto, toto2, mem_adr : std_logic_vector(31 downto 0);
+signal op2OutShifter_s, op1Alu_s, dec_comp_op1_s, dec_comp_op2_s, op2Alu_s, exe_res_s, mem_adr : std_logic_vector(31 downto 0);
+
 
 
 
 begin
 
-toto <= ((dec_op1(31 downto 1)&(dec_op1(0) XOR dec_comp_op1)) AND (NOT X"00000000"));
-toto2 <= op2_s(31 downto 1)&(dec_comp_op2 XOR op2_s(0));
+-- On étend dec_comp_op1 et dec_comp_op2 sur 32 Bits
+dec_comp_op1_s <= X"FFFFFFFF" WHEN dec_comp_op1='1' else (others=>'0');
+dec_comp_op2_s <= X"FFFFFFFF" WHEN dec_comp_op2='1' else (others=>'0');
+
+-- On prépare la nappe 32 bits OP1 qui entre dans l'alu
+op1Alu_s <= (dec_op1 XOR dec_comp_op1_s) AND NOT X"00000000";
+
+-- On prépare la nappe 32 bits OP2 qui entre dans l'alu (depuis le shifter)
+op2Alu_s <= op2OutShifter_s XOR dec_comp_op2_s;
+
+-- Ne pouvant pas lire une sortie, on utilise un signal exe_res_s
+exe_res <= exe_res_s;
+
+-- On court circuite l'alu pour envoyer l'op1 au fifo si nécessaire
+mem_adr <= exe_res_s WHEN dec_pre_index='1' else dec_op1;
 
 --  Component instantiation.
 	shifter: entity work.Shifter
@@ -98,16 +112,16 @@ toto2 <= op2_s(31 downto 1)&(dec_comp_op2 XOR op2_s(0));
 	          din           => dec_op2,       
 	          cin           => dec_cy,      
 	   	      cout          => c_s,      
-	    	  dout          => op2_s,
+	    	  dout          => op2OutShifter_s,
 	    	  vdd           => vdd,
               vss           => vss);
 
 	alu: entity work.Alu
-	port map (op1           => toto,
-        	  op2           => toto2,
+	port map (op1           => op1Alu_s,
+        	  op2           => op2Alu_s,
               cin           => c_s,
        		  cmd           => dec_alu_cmd,
-        	  res           => exe_res,
+        	  res           => exe_res_s,
         	  cout          => exe_c,
         	  z             => exe_z,
         	  n             => exe_n,
@@ -116,34 +130,34 @@ toto2 <= op2_s(31 downto 1)&(dec_comp_op2 XOR op2_s(0));
               vss           => vss);
 
 	exec2mem : entity work.fifo
-	port map (	    din(71)	 => dec_mem_lw,
-					din(70)	 => dec_mem_lb,
-					din(69)	 => dec_mem_sw,
-					din(68)	 => dec_mem_sb,
+    port map (  din(71)	 => dec_mem_lw,
+			    din(70)	 => dec_mem_lb,
+    			din(69)	 => dec_mem_sw,
+	    		din(68)	 => dec_mem_sb,
+    
+	    		din(67 downto 64) => dec_mem_dest,
+	    		din(63 downto 32) => dec_mem_data,
+	    		din(31 downto 0)  => mem_adr,
 
-					din(67 downto 64) => dec_mem_dest,
-					din(63 downto 32) => dec_mem_data,
-					din(31 downto 0)  => mem_adr,
+	    		dout(71)	 => exe_mem_lw,
+	    		dout(70)	 => exe_mem_lb,
+	    		dout(69)	 => exe_mem_sw,
+	    		dout(68)	 => exe_mem_sb,
 
-					dout(71)	 => exe_mem_lw,
-					dout(70)	 => exe_mem_lb,
-					dout(69)	 => exe_mem_sw,
-					dout(68)	 => exe_mem_sb,
+	    		dout(67 downto 64) => exe_mem_dest,
+	    		dout(63 downto 32) => exe_mem_data,
+	    		dout(31 downto 0)  => exe_mem_adr,
 
-					dout(67 downto 64) => exe_mem_dest,
-					dout(63 downto 32) => exe_mem_data,
-					dout(31 downto 0)  => exe_mem_adr,
+	    		push     => exe_push,
+	    		pop		 => mem_pop,
 
-					push     => exe_push,
-					pop		 => mem_pop,
+	    		empty	 => exe2mem_empty,
+	    		full	 => exe2mem_full,
 
-					empty	 => exe2mem_empty,
-					full	 => exe2mem_full,
-
-					reset_n	 => reset_n,
-					ck		 => ck,
-					vdd		 => vdd,
-					vss		 => vss);
+	    		reset_n	 => reset_n,
+	    		ck		 => ck,
+	    		vdd		 => vdd,
+	    		vss		 => vss);
 
 
 
