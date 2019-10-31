@@ -39,7 +39,7 @@ dout <=      (din(31-shiftVal_s downto 0)         & decalTampon_s(shiftVal_s-1 d
 	    else (decalTampon_s(shiftVal_s-1 downto 0)& din(31 downto  shiftVal_s ))    WHEN (shift_lsr='1' OR shift_asr='1')
 	    else (din(shiftVal_s-1 downto 0)          & din(31 downto  shiftVal_s ))    WHEN shift_ror='1'
 	    else (cin & din(31 downto 1))                 				WHEN shift_rrx='1'
-	    else (others=>'0');
+	    else din;
 
 -- VERSION CONVENTIONNELLE --
 --res_s <=      signed(din(31-shiftVal_s downto 0)         & decalTampon_s(shiftVal_s-1 downto 0))  WHEN shift_lsl='1'

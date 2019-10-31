@@ -32,10 +32,10 @@ begin
     shift_lsl <= '0';
 	shift_lsr <= '0';
 	shift_asr <= '0';
-	shift_ror <= '1';
+	shift_ror <= '0';
 	shift_rrx <= '0';
-	shift_val <= "00010";
-	din       <=  "01111111111111111111111110011111", "11111111111111111111111110011111" after 100 ns;
+	shift_val <= "00000";
+	din       <=  X"00000001", X"00000002" after 100 ns;
 
 
 end simu;

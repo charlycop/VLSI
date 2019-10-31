@@ -90,7 +90,8 @@ dec_comp_op1_s <= X"FFFFFFFF" WHEN dec_comp_op1='1' else (others=>'0');
 dec_comp_op2_s <= X"FFFFFFFF" WHEN dec_comp_op2='1' else (others=>'0');
 
 -- On prépare la nappe 32 bits OP1 qui entre dans l'alu
-op1Alu_s <= (dec_op1 XOR dec_comp_op1_s) AND NOT X"00000000";
+--op1Alu_s <= (dec_op1 XOR dec_comp_op1_s) AND NOT X"00000000";
+op1Alu_s <= (dec_op1 XOR dec_comp_op1_s) AND (NOT X"00000000");
 
 -- On prépare la nappe 32 bits OP2 qui entre dans l'alu (depuis le shifter)
 op2Alu_s <= op2OutShifter_s XOR dec_comp_op2_s;
