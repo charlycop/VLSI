@@ -1,6 +1,6 @@
 #!/bin/bash
 
-fichier='annale'
+fichier='annale_2018'
 testbench='testbenchannale'
 etoiles='***********************'
 clear 

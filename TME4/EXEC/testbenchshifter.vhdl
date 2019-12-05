@@ -29,12 +29,12 @@ begin
     L0: entity work.Shifter
         port map (shift_lsl, shift_lsr, shift_asr, shift_ror, shift_rrx, shift_val, din, cin, dout, cout, vdd, vss);
 	cin <=  '1';
-    shift_lsl <= '0';
+    shift_lsl <= '1';
 	shift_lsr <= '0';
 	shift_asr <= '0';
 	shift_ror <= '0';
 	shift_rrx <= '0';
-	shift_val <= "00000";
+	shift_val <= "00010";
 	din       <=  X"00000001", X"00000002" after 100 ns;
 
 

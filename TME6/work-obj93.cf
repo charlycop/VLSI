@@ -1,0 +1,7 @@
+v 4
+file . "testbench_Reg.vhdl" "d80bc4796e503466c5b290dc35e6a84e59afb2cc" "20191203165730.461":
+  entity testbench_reg at 4( 75) + 0 on 465;
+  architecture simu of testbench_reg at 12( 213) + 0 on 466;
+file . "Reg.vhdl" "107f7eec692926477f9148862245ecbea6135281" "20191203165729.662":
+  entity reg at 1( 0) + 0 on 463;
+  architecture behavior of reg at 75( 1756) + 0 on 464;

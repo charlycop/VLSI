@@ -15,15 +15,15 @@ signal prog_en :  std_logic;
 signal ck 	:  std_logic:='0';
 signal run 	:  std_logic;
 signal compte   : integer;
+signal clk_go : std_logic := '1';
 
 begin
 
-    L0: entity work.annale
+    L0: entity work.annale_2018
         port map (prog, prog_en, ck, run, compte);
 
     --prog <= "00", "01" after 1000 ns, "10" after 2000 ns;
     prog_en <= '0', '1' after 10 ns;
-    ck <= not ck after 1 ns;
 
 
 process
@@ -35,10 +35,16 @@ begin
 	for i in 1 to 4 loop
 		--  Set the inputs.
 		prog <= std_logic_vector(to_unsigned(i,2));
-		wait for 1000 ns;
+		wait for 1000000 ns;
 		
 	end loop;
-assert ((compte=200) AND (prog="00") AND (run='1'))  report "RUN A 1 HOLALA" severity error;
+
+wait;
 end process;
+
+    assert ((compte<=386) AND prog="00")  report "ERREUR COMPTEEUR SUP A 386 : "&integer'image(compte) severity error;
+    -- LA CLOCK
+	clk_go <= '0' after 100000000 ns; 
+	ck<= not ck after 10 ns when clk_go='1';
 
 end simu;
